@@ -18,7 +18,7 @@
 
 #include <CD74HC4067.h>
 #include <EEPROM.h>
-#include <i2c_t3.h>
+// #include <Wire.h>
 #include <MIDI.h>
 #include <ResponsiveAnalogRead.h>
 
@@ -224,37 +224,37 @@ if(i2cMaster) {
   D(Serial.println ("I2C scan complete."));
 
 #else
-  Wire.begin(I2C_MASTER, I2C_ADDRESS, I2C_PINS_18_19, I2C_PULLUP_EXT, 400000);
-  Wire.setDefaultTimeout(10000); // 10ms
+  // Wire.begin(I2C_MASTER, I2C_ADDRESS, I2C_PINS_18_19, I2C_PULLUP_EXT, 400000);
+  // Wire.setDefaultTimeout(10000); // 10ms
 
-  D(Serial.println ("Scanning I2C bus"));
+  // D(Serial.println ("Scanning I2C bus"));
   
-  Wire.begin();
+  // Wire.begin();
   
-  for (byte i = 8; i < 120; i++)
-  {
-    Wire.beginTransmission (i);
-    if (Wire.endTransmission () == 0)
-      {
-        if(i == ansibleI2Caddress) {
-          ansiblePresent = true;
-          D(Serial.println ("Found ansible"));
-        }
+  // for (byte i = 8; i < 120; i++)
+  // {
+  //   Wire.beginTransmission (i);
+  //   if (Wire.endTransmission () == 0)
+  //     {
+  //       if(i == ansibleI2Caddress) {
+  //         ansiblePresent = true;
+  //         D(Serial.println ("Found ansible"));
+  //       }
 
-        if(i == txoI2Caddress) {
-          txoPresent = true;
-          D(Serial.println ("Found TXO"));
-        }
+  //       if(i == txoI2Caddress) {
+  //         txoPresent = true;
+  //         D(Serial.println ("Found TXO"));
+  //       }
 
-        if(i == er301I2Caddress) {
-          er301Present = true;
-          D(Serial.println ("Found ER301"));
-        }
-      delay (1);  // maybe unneeded?
-      } // end of good response
-  } // end of for loop
+  //       if(i == er301I2Caddress) {
+  //         er301Present = true;
+  //         D(Serial.println ("Found ER301"));
+  //       }
+  //     delay (1);  // maybe unneeded?
+  //     } // end of good response
+  // } // end of for loop
 
-  Serial.println ("I2C scan complete.");
+  // Serial.println ("I2C scan complete.");
 
 #endif
 
@@ -268,9 +268,9 @@ if(i2cMaster) {
   Wire1.onReceive(i2cWrite);
   Wire1.onRequest(i2cReadRequest);
 #else
-  Wire.begin(I2C_SLAVE, I2C_ADDRESS, I2C_PINS_18_19, I2C_PULLUP_EXT, 400000);
-  Wire.onReceive(i2cWrite);
-  Wire.onRequest(i2cReadRequest);
+  // Wire.begin(I2C_SLAVE, I2C_ADDRESS, I2C_PINS_18_19, I2C_PULLUP_EXT, 400000);
+  // Wire.onReceive(i2cWrite);
+  // Wire.onRequest(i2cReadRequest);
 #endif
 
 }
@@ -495,11 +495,11 @@ void sendi2c(uint8_t model, uint8_t deviceIndex, uint8_t cmd, uint8_t devicePort
   Wire1.write(messageBuffer, 4);
   Wire1.endTransmission();
 #else
-  Wire.beginTransmission(model + deviceIndex);
-  messageBuffer[0] = cmd;
-  messageBuffer[1] = (uint8_t)devicePort;
-  Wire.write(messageBuffer, 4);
-  Wire.endTransmission();
+  // Wire.beginTransmission(model + deviceIndex);
+  // messageBuffer[0] = cmd;
+  // messageBuffer[1] = (uint8_t)devicePort;
+  // Wire.write(messageBuffer, 4);
+  // Wire.endTransmission();
 #endif
 }
 
@@ -566,8 +566,8 @@ void i2cReadRequest()
   Wire1.write(shiftReady >> 8);
   Wire1.write(shiftReady & 255);
 #else
-  Wire.write(shiftReady >> 8);
-  Wire.write(shiftReady & 255);
+  // Wire.write(shiftReady >> 8);
+  // Wire.write(shiftReady & 255);
 #endif
 }
 

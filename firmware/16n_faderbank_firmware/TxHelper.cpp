@@ -8,7 +8,7 @@
 #include "Arduino.h"
 
 // i2c
-#include <i2c_t3.h>
+// #include <i2c_t3.h>
 
 // initialize the basic values for the TXi
 int TxHelper::Ports = 8;
@@ -50,19 +50,19 @@ TxResponse TxHelper::Parse(size_t len)
   int buffer[4] = {0, 0, 0, 0};
 
   // zero out the read buffer
-  int counterPal = 0;
-  memset(buffer, 0, sizeof(buffer));
+  // int counterPal = 0;
+  // memset(buffer, 0, sizeof(buffer));
 
   // read the data
-  while (1 < (W0 ? Wire.available() : Wire1.available()))
-  {
-    if (counterPal < 4)
-    {
-      buffer[counterPal++] = (W0 ? Wire.read() : Wire1.read());
-    }
-  }
-  // get the last byte
-  buffer[counterPal] = (W0 ? Wire.read() : Wire1.read());
+  // while (1 < (W0 ? Wire.available() : Wire1.available()))
+  // {
+  //   if (counterPal < 4)
+  //   {
+  //     buffer[counterPal++] = (W0 ? Wire.read() : Wire1.read());
+  //   }
+  // }
+  // // get the last byte
+  // buffer[counterPal] = (W0 ? Wire.read() : Wire1.read());
 
   // Serial.printf("Buffers: %d, %d, %d, %d\n", buffer[0], buffer[1], buffer[2], buffer[3]);
 
