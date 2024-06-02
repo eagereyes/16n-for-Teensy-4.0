@@ -3,6 +3,5 @@
 *.s#*
 .DS_Store
 build/orig
-*.hex
 *.vscode
 firmware/releases
