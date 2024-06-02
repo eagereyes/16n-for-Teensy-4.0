@@ -1,3 +1,17 @@
+# 16n for Teensy 4.0
+
+This is a very slightly modified version of the 16n fader bank code to run on Teensy 4.0 (since 3.2 and even LC are past their end-of-life and impossible to get at this point).
+
+Other than replace a couple of includes, I have mostly commented out the I2C code. I don't use it and can't test it. TRS MIDI and USB work.
+
+The only adjustment I've made in the config utility was to set the maximum raw value to 4090. I don't know if this is due to the different Teensy or my particular faders, so I haven't tried to change it in the code.
+
+I'm also including a hex file that should work on Teensy 4.0 (and possibly higher versions) if you don't want to compile it yourself.
+
+Original README follows:
+
+----
+
 # 16n
 
 Once upon a time, Sean Hellfritsch and Brian Crabtree [made a faderbank][linespost].
