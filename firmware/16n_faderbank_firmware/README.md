@@ -1,3 +1,12 @@
+# 16n Firmware for Teensy 4.0
+
+This is a very slightly modified version of the firmware to run on Teensy 4.0 (see the top-level README in this repo). The main thing to be aware of is that I've commented out all the I2C code, since I can't test it.
+
+
+Original README below
+
+----
+
 # 16n Firmware
 
 16n Firmware is designed to run on a Teensy 3.2; it is also compatible with a Teensy LC, although the official BOM recommends a 3.2.
